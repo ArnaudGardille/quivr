@@ -1,4 +1,5 @@
 from models.settings import get_supabase_client
+from modules.chat.dto.inputs import ChatMessageProperties
 from modules.chat.entity.chat import Chat
 from modules.chat.repository.chats_interface import ChatsInterface
 
@@ -39,7 +40,7 @@ class Chats(ChatsInterface):
         return None
 
     def get_chat_history(self, chat_id: str):
-        reponse = (
+        response = (
             self.db.from_("chat_history")
             .select("*")
             .filter("chat_id", "eq", chat_id)
@@ -47,7 +48,7 @@ class Chats(ChatsInterface):
             .execute()
         )
 
-        return reponse
+        return response
 
     def get_user_chats(self, user_id):
         response = (
@@ -67,12 +68,13 @@ class Chats(ChatsInterface):
                     "chat_id": str(chat_history.chat_id),
                     "user_message": chat_history.user_message,
                     "assistant": chat_history.assistant,
-                    "prompt_id": str(chat_history.prompt_id)
-                    if chat_history.prompt_id
-                    else None,
-                    "brain_id": str(chat_history.brain_id)
-                    if chat_history.brain_id
-                    else None,
+                    "prompt_id": (
+                        str(chat_history.prompt_id) if chat_history.prompt_id else None
+                    ),
+                    "brain_id": (
+                        str(chat_history.brain_id) if chat_history.brain_id else None
+                    ),
+                    "metadata": chat_history.metadata if chat_history.metadata else {},
                 }
             )
             .execute()
@@ -102,3 +104,15 @@ class Chats(ChatsInterface):
 
     def delete_chat_history(self, chat_id):
         self.db.table("chat_history").delete().match({"chat_id": chat_id}).execute()
+
+    def update_chat_message(
+        self, chat_id, message_id, chat_message_properties: ChatMessageProperties
+    ):
+        response = (
+            self.db.table("chat_history")
+            .update(chat_message_properties)
+            .match({"message_id": message_id, "chat_id": chat_id})
+            .execute()
+        )
+
+        return response

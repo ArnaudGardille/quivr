@@ -3,7 +3,7 @@ import { UUID } from "crypto";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { useBrainFetcher } from "@/app/brains-management/[brainId]/components/BrainManagementTabs/hooks/useBrainFetcher";
+import { useBrainFetcher } from "@/app/studio/[brainId]/BrainManagementTabs/hooks/useBrainFetcher";
 import { CreateBrainInput } from "@/lib/api/brain/types";
 import { useBrainApi } from "@/lib/api/brain/useBrainApi";
 import { usePromptApi } from "@/lib/api/prompt/usePromptApi";
@@ -17,14 +17,12 @@ import { MinimalBrainForUser } from "../types";
 export const useBrainProvider = () => {
   const { publish } = useToast();
   const { track } = useEventTracking();
-  const { createBrain, deleteBrain, getBrains, getDefaultBrain } =
-    useBrainApi();
+  const { createBrain, deleteBrain, getBrains } = useBrainApi();
   const { getPublicPrompts } = usePromptApi();
   const { t } = useTranslation(["delete_or_unsubscribe_from_brain"]);
 
   const [allBrains, setAllBrains] = useState<MinimalBrainForUser[]>([]);
   const [currentBrainId, setCurrentBrainId] = useState<null | UUID>(null);
-  const [defaultBrainId, setDefaultBrainId] = useState<UUID>();
   const [isFetchingBrains, setIsFetchingBrains] = useState(true);
   const [publicPrompts, setPublicPrompts] = useState<Prompt[]>([]);
   const [currentPromptId, setCurrentPromptId] = useState<null | string>(null);
@@ -87,13 +85,6 @@ export const useBrainProvider = () => {
     [deleteBrain, publish, track]
   );
 
-  const fetchDefaultBrain = useCallback(async () => {
-    const userDefaultBrain = await getDefaultBrain();
-    if (userDefaultBrain !== undefined) {
-      setDefaultBrainId(userDefaultBrain.id);
-    }
-  }, [currentBrainId, getDefaultBrain]);
-
   const fetchPublicPrompts = useCallback(async () => {
     setPublicPrompts(await getPublicPrompts());
   }, [getPublicPrompts]);
@@ -107,9 +98,6 @@ export const useBrainProvider = () => {
     currentBrainDetails,
     currentBrainId,
     setCurrentBrainId,
-
-    defaultBrainId,
-    fetchDefaultBrain,
 
     fetchPublicPrompts,
     publicPrompts,

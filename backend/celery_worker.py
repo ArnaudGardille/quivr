@@ -1,15 +1,19 @@
 import asyncio
 import io
 import os
+from datetime import datetime, timezone
 
-import sentry_sdk
-from celery import Celery
 from celery.schedules import crontab
+from celery_config import celery
 from fastapi import UploadFile
 from logger import get_logger
+from middlewares.auth.auth_bearer import AuthBearer
 from models.files import File
 from models.settings import get_supabase_client
+from modules.brain.integrations.Notion.Notion_connector import NotionConnector
+from modules.brain.repository.integration_brains import IntegrationBrain
 from modules.brain.service.brain_service import BrainService
+from modules.brain.service.brain_vector_service import BrainVectorService
 from modules.notification.dto.inputs import NotificationUpdatableProperties
 from modules.notification.entity.notification import NotificationsStatusEnum
 from modules.notification.service.notification_service import NotificationService
@@ -17,52 +21,14 @@ from modules.onboarding.service.onboarding_service import OnboardingService
 from packages.files.crawl.crawler import CrawlWebsite
 from packages.files.parsers.github import process_github
 from packages.files.processors import filter_file
+from packages.utils.telemetry import maybe_send_telemetry
 
 logger = get_logger(__name__)
-
-sentry_dsn = os.getenv("SENTRY_DSN")
-if sentry_dsn:
-    sentry_sdk.init(
-        dsn=sentry_dsn,
-        sample_rate=0.1,
-        enable_tracing=True,
-    )
-
-CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", "")
-CELERY_BROKER_QUEUE_NAME = os.getenv("CELERY_BROKER_QUEUE_NAME", "quivr")
 
 onboardingService = OnboardingService()
 notification_service = NotificationService()
 brain_service = BrainService()
-
-if CELERY_BROKER_URL.startswith("sqs"):
-    broker_transport_options = {
-        CELERY_BROKER_QUEUE_NAME: {
-            "my-q": {
-                "url": CELERY_BROKER_URL,
-            }
-        }
-    }
-    celery = Celery(
-        __name__,
-        broker=CELERY_BROKER_URL,
-        task_serializer="json",
-        task_concurrency=4,
-        worker_prefetch_multiplier=1,
-        broker_transport_options=broker_transport_options,
-    )
-    celery.conf.task_default_queue = CELERY_BROKER_QUEUE_NAME
-elif CELERY_BROKER_URL.startswith("redis"):
-    celery = Celery(
-        __name__,
-        broker=CELERY_BROKER_URL,
-        backend=CELERY_BROKER_URL,
-        task_concurrency=4,
-        worker_prefetch_multiplier=1,
-        task_serializer="json",
-    )
-else:
-    raise ValueError(f"Unsupported broker URL: {CELERY_BROKER_URL}")
+auth_bearer = AuthBearer()
 
 
 @celery.task(name="process_file_and_notify")
@@ -71,6 +37,8 @@ def process_file_and_notify(
     file_original_name: str,
     brain_id,
     notification_id=None,
+    integration=None,
+    delete_file=False,
 ):
     try:
         supabase_client = get_supabase_client()
@@ -89,6 +57,11 @@ def process_file_and_notify(
 
             file_instance = File(file=upload_file)
             loop = asyncio.get_event_loop()
+            brain_vector_service = BrainVectorService(brain_id)
+            if delete_file:  # TODO fix bug
+                brain_vector_service.delete_file_from_brain(
+                    file_original_name, only_vectors=True
+                )
             message = loop.run_until_complete(
                 filter_file(
                     file=file_instance,
@@ -101,16 +74,12 @@ def process_file_and_notify(
             os.remove(tmp_file_name)
 
             if notification_id:
-                notification_message = {
-                    "status": message["type"],
-                    "message": message["message"],
-                    "name": file_instance.file.filename if file_instance.file else "",
-                }
+
                 notification_service.update_notification_by_id(
                     notification_id,
                     NotificationUpdatableProperties(
-                        status=NotificationsStatusEnum.Done,
-                        message=str(notification_message),
+                        status=NotificationsStatusEnum.SUCCESS,
+                        description="Your file has been properly uploaded!",
                     ),
                 )
             brain_service.update_brain_last_update_time(brain_id)
@@ -120,19 +89,14 @@ def process_file_and_notify(
         logger.error("TimeoutError")
 
     except Exception as e:
-        notification_message = {
-            "status": "error",
-            "message": "There was an error uploading the file. Please check the file and try again. If the issue persist, please open an issue on Github",
-            "name": file_instance.file.filename if file_instance.file else "",
-        }
         notification_service.update_notification_by_id(
             notification_id,
             NotificationUpdatableProperties(
-                status=NotificationsStatusEnum.Done,
-                message=str(notification_message),
+                status=NotificationsStatusEnum.ERROR,
+                description=f"An error occurred while processing the file: {e}",
             ),
         )
-        raise e
+        return False
 
 
 @celery.task(name="process_crawl_and_notify")
@@ -164,6 +128,13 @@ def process_crawl_and_notify(
                 original_file_name=crawl_website_url,
             )
         )
+        notification_service.update_notification_by_id(
+            notification_id,
+            NotificationUpdatableProperties(
+                status=NotificationsStatusEnum.SUCCESS,
+                description=f"Your URL has been properly crawled!",
+            ),
+        )
     else:
         loop = asyncio.get_event_loop()
         message = loop.run_until_complete(
@@ -174,18 +145,14 @@ def process_crawl_and_notify(
         )
 
     if notification_id:
-        notification_message = {
-            "status": message["type"],
-            "message": message["message"],
-            "name": crawl_website_url,
-        }
         notification_service.update_notification_by_id(
             notification_id,
             NotificationUpdatableProperties(
-                status=NotificationsStatusEnum.Done,
-                message=str(notification_message),
+                status=NotificationsStatusEnum.SUCCESS,
+                description="Your file has been properly uploaded!",
             ),
         )
+
     brain_service.update_brain_last_update_time(brain_id)
     return True
 
@@ -195,9 +162,65 @@ def remove_onboarding_more_than_x_days_task():
     onboardingService.remove_onboarding_more_than_x_days(7)
 
 
+@celery.task(name="NotionConnectorLoad")
+def process_integration_brain_created_initial_load(brain_id, user_id):
+    notion_connector = NotionConnector(brain_id=brain_id, user_id=user_id)
+
+    pages = notion_connector.load()
+
+    print("pages: ", len(pages))
+
+
+@celery.task
+def process_integration_brain_sync_user_brain(brain_id, user_id):
+    notion_connector = NotionConnector(brain_id=brain_id, user_id=user_id)
+
+    notion_connector.poll()
+
+
+@celery.task
+def ping_telemetry():
+    maybe_send_telemetry("ping", {"ping": "pong"})
+
+
+@celery.task
+def process_integration_brain_sync():
+    integration = IntegrationBrain()
+    integrations = integration.get_integration_brain_by_type_integration("notion")
+
+    time = datetime.now(timezone.utc)  # Make `time` timezone-aware
+    # last_synced is a string that represents a timestampz in the database
+    # only call process_integration_brain_sync_user_brain if more than 1 day has passed since the last sync
+    if not integrations:
+        return
+    # TODO fix this
+    # for integration in integrations:
+    #     print(f"last_synced: {integration.last_synced}")
+    #     print(f"Integration Name: {integration.name}")
+    #     last_synced = datetime.strptime(
+    #         integration.last_synced, "%Y-%m-%dT%H:%M:%S.%f%z"
+    #     )
+    #     if last_synced < time - timedelta(hours=12) and integration.name == "notion":
+    #         process_integration_brain_sync_user_brain.delay(
+    #             brain_id=integration.brain_id, user_id=integration.user_id
+    #         )
+
+
 celery.conf.beat_schedule = {
     "remove_onboarding_more_than_x_days_task": {
         "task": f"{__name__}.remove_onboarding_more_than_x_days_task",
         "schedule": crontab(minute="0", hour="0"),
+    },
+    "process_integration_brain_sync": {
+        "task": f"{__name__}.process_integration_brain_sync",
+        "schedule": crontab(minute="*/5", hour="*"),
+    },
+    "ping_telemetry": {
+        "task": f"{__name__}.ping_telemetry",
+        "schedule": crontab(minute="*/30", hour="*"),
+    },
+    "process_sync_active": {
+        "task": "process_sync_active",
+        "schedule": crontab(minute="*/5", hour="*"),
     },
 }

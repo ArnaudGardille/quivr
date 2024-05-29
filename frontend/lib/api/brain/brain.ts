@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 import { AxiosInstance } from "axios";
 
-import { BrainRoleType } from "@/lib/components/BrainUsers/types";
+import { BrainRoleType } from "@/app/studio/[brainId]/BrainManagementTabs/components/PeopleTab/BrainUsers/types";
 import {
   BackendMinimalBrainForUser,
   Brain,
@@ -11,6 +11,7 @@ import {
 
 import {
   CreateBrainInput,
+  IntegrationBrains,
   ListFilesProps,
   SubscriptionUpdatableProperties,
   UpdateBrainInput,
@@ -48,15 +49,6 @@ export const deleteBrain = async (
   axiosInstance: AxiosInstance
 ): Promise<void> => {
   await axiosInstance.delete(`/brains/${brainId}/subscription`);
-};
-
-export const getDefaultBrain = async (
-  axiosInstance: AxiosInstance
-): Promise<MinimalBrainForUser | undefined> => {
-  return mapBackendMinimalBrainToMinimalBrain(
-    (await axiosInstance.get<BackendMinimalBrainForUser>(`/brains/default/`))
-      .data
-  );
 };
 
 export const getBrains = async (
@@ -112,13 +104,6 @@ export const updateBrainAccess = async (
   });
 };
 
-export const setAsDefaultBrain = async (
-  brainId: string,
-  axiosInstance: AxiosInstance
-): Promise<void> => {
-  await axiosInstance.post(`/brains/${brainId}/default`);
-};
-
 export const updateBrain = async (
   brainId: string,
   brain: UpdateBrainInput,
@@ -146,8 +131,19 @@ export const getDocsFromQuestion = async (
   question: string,
   axiosInstance: AxiosInstance
 ): Promise<ListFilesProps["files"]> => {
-  return (await axiosInstance.post<Record<"docs",ListFilesProps["files"]>>(`/brains/${brainId}/documents`, {
-    question,
-  })).data.docs;
-  }
+  return (
+    await axiosInstance.post<Record<"docs", ListFilesProps["files"]>>(
+      `/brains/${brainId}/documents`,
+      {
+        question,
+      }
+    )
+  ).data.docs;
+};
 
+export const getIntegrationBrains = async (
+  axiosInstance: AxiosInstance
+): Promise<IntegrationBrains[]> => {
+  return (await axiosInstance.get<IntegrationBrains[]>(`/brains/integrations/`))
+    .data;
+};

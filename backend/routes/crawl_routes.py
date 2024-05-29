@@ -5,13 +5,17 @@ from celery_worker import process_crawl_and_notify
 from fastapi import APIRouter, Depends, Query, Request
 from logger import get_logger
 from middlewares.auth import AuthBearer, get_current_user
-from models import UserUsage
+from modules.brain.entity.brain_entity import RoleEnum
+from modules.brain.service.brain_authorization_service import (
+    validate_brain_authorization,
+)
 from modules.knowledge.dto.inputs import CreateKnowledgeProperties
 from modules.knowledge.service.knowledge_service import KnowledgeService
-from modules.notification.dto.inputs import CreateNotificationProperties
+from modules.notification.dto.inputs import CreateNotification
 from modules.notification.entity.notification import NotificationsStatusEnum
 from modules.notification.service.notification_service import NotificationService
 from modules.user.entity.user_identity import UserIdentity
+from modules.user.service.user_usage import UserUsage
 from packages.files.crawl.crawler import CrawlWebsite
 from packages.files.file import convert_bytes
 
@@ -39,7 +43,9 @@ async def crawl_endpoint(
     Crawl a website and process the crawled data.
     """
 
-    # [TODO] check if the user is the owner/editor of the brain
+    validate_brain_authorization(
+        brain_id, current_user.id, [RoleEnum.Editor, RoleEnum.Owner]
+    )
 
     userDailyUsage = UserUsage(
         id=current_user.id,
@@ -56,16 +62,13 @@ async def crawl_endpoint(
             "type": "error",
         }
     else:
-        crawl_notification_id = None
-        if chat_id:
-            crawl_notification_id = notification_service.add_notification(
-                CreateNotificationProperties(
-                    action="CRAWL",
-                    chat_id=chat_id,
-                    status=NotificationsStatusEnum.Pending,
-                ).id
+        upload_notification = notification_service.add_notification(
+            CreateNotification(
+                user_id=current_user.id,
+                status=NotificationsStatusEnum.INFO,
+                title=f"Processing Crawl {crawl_website.url}",
             )
-
+        )
         knowledge_to_add = CreateKnowledgeProperties(
             brain_id=brain_id,
             url=crawl_website.url,
@@ -78,7 +81,7 @@ async def crawl_endpoint(
         process_crawl_and_notify.delay(
             crawl_website_url=crawl_website.url,
             brain_id=brain_id,
-            notification_id=crawl_notification_id,
+            notification_id=upload_notification.id,
         )
 
         return {"message": "Crawl processing has started."}

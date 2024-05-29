@@ -7,6 +7,7 @@ from logger import get_logger
 from modules.brain.service.brain_service import BrainService
 from modules.chat.dto.chats import ChatItem
 from modules.chat.dto.inputs import (
+    ChatMessageProperties,
     ChatUpdatableProperties,
     CreateChatHistory,
     CreateChatProperties,
@@ -81,15 +82,25 @@ class ChatService:
             return []
         else:
             enriched_history: List[GetChatHistoryOutput] = []
+            brain_cache = {}
+            prompt_cache = {}
             for message in history:
                 message = ChatHistory(message)
                 brain = None
                 if message.brain_id:
-                    brain = brain_service.get_brain_by_id(message.brain_id)
+                    if message.brain_id in brain_cache:
+                        brain = brain_cache[message.brain_id]
+                    else:
+                        brain = brain_service.get_brain_by_id(message.brain_id)
+                        brain_cache[message.brain_id] = brain
 
                 prompt = None
                 if message.prompt_id:
-                    prompt = prompt_service.get_prompt_by_id(message.prompt_id)
+                    if message.prompt_id in prompt_cache:
+                        prompt = prompt_cache[message.prompt_id]
+                    else:
+                        prompt = prompt_service.get_prompt_by_id(message.prompt_id)
+                        prompt_cache[message.prompt_id] = prompt
 
                 enriched_history.append(
                     GetChatHistoryOutput(
@@ -99,9 +110,10 @@ class ChatService:
                         assistant=message.assistant,
                         message_time=message.message_time,
                         brain_name=brain.name if brain else None,
-                        brain_id=brain.id if brain else None,
+                        brain_id=str(brain.id) if brain else None,
                         prompt_title=prompt.title if prompt else None,
                         metadata=message.metadata,
+                        thumbs=message.thumbs,
                     )
                 )
             return enriched_history
@@ -111,7 +123,7 @@ class ChatService:
         chat_id: UUID,
     ) -> List[ChatItem]:
         chat_history = self.get_chat_history(str(chat_id))
-        chat_notifications = notification_service.get_chat_notifications(chat_id)
+        chat_notifications = []
         return merge_chat_history_and_notifications(chat_history, chat_notifications)
 
     def get_user_chats(self, user_id: str) -> List[Chat]:
@@ -190,6 +202,17 @@ class ChatService:
             pass
         try:
             self.repository.delete_chat(chat_id)
+        except Exception as e:
+            print(e)
+            pass
+
+    def update_chat_message(
+        self, chat_id, message_id, chat_message_properties: ChatMessageProperties
+    ):
+        try:
+            return self.repository.update_chat_message(
+                chat_id, message_id, chat_message_properties
+            ).data
         except Exception as e:
             print(e)
             pass

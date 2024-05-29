@@ -1,6 +1,8 @@
+from fastapi import HTTPException
 from modules.brain.service.brain_service import BrainService
 
 from .parsers.audio import process_audio
+from .parsers.bibtex import process_bibtex
 from .parsers.code_python import process_python
 from .parsers.csv import process_csv
 from .parsers.docx import process_docx
@@ -30,6 +32,7 @@ file_processors = {
     ".mpeg": process_audio,
     ".pdf": process_pdf,
     ".html": process_html,
+    ".bib": process_bibtex,
     ".pptx": process_powerpoint,
     ".docx": process_docx,
     ".odt": process_odt,
@@ -86,6 +89,7 @@ async def filter_file(
             result = await file_processors[file.file_extension](
                 file=file,
                 brain_id=brain_id,
+                original_file_name=original_file_name,
             )
             if result is None or result == 0:
                 return create_response(
@@ -99,10 +103,7 @@ async def filter_file(
         except Exception as e:
             # Add more specific exceptions as needed.
             print(f"Error processing file: {e}")
-            return create_response(
-                f"⚠️ An error occurred while processing {using_file_name}.",  # pyright: ignore reportPrivateUsage=none
-                "error",
-            )
+            raise e
 
     return create_response(
         f"❌ {using_file_name} is not supported.",  # pyright: ignore reportPrivateUsage=none

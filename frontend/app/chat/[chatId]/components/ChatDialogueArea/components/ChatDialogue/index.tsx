@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { useOnboarding } from "@/lib/hooks/useOnboarding";
 
 import { ChatItem } from "./components";
-import { Onboarding } from "./components/Onboarding/Onboarding";
 import { useChatDialogue } from "./hooks/useChatDialogue";
 import {
   chatDialogueContainerClassName,
@@ -28,10 +27,13 @@ export const ChatDialogue = ({
   if (shouldDisplayOnboardingAInstructions) {
     return (
       <div className={chatDialogueContainerClassName} ref={chatListRef}>
-        <Onboarding />
         <div className={chatItemContainerClassName}>
-          {chatItems.map((chatItem) => (
-            <ChatItem key={getKeyFromChatItem(chatItem)} content={chatItem} />
+          {chatItems.map((chatItem, index) => (
+            <ChatItem
+              key={getKeyFromChatItem(chatItem)}
+              content={chatItem}
+              index={index}
+            />
           ))}
         </div>
       </div>
@@ -49,8 +51,13 @@ export const ChatDialogue = ({
         </div>
       ) : (
         <div className={chatItemContainerClassName}>
-          {chatItems.map((chatItem) => (
-            <ChatItem key={getKeyFromChatItem(chatItem)} content={chatItem} />
+          {chatItems.map((chatItem, index) => (
+            <ChatItem
+              key={getKeyFromChatItem(chatItem)}
+              content={chatItem}
+              index={index}
+              lastMessage={index === chatItems.length - 1}
+            />
           ))}
         </div>
       )}

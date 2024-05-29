@@ -7,6 +7,7 @@ from models.databases.repository import Repository
 logger = get_logger(__name__)
 
 
+#TODO: change the name of this class because another one already exists
 class UserUsage(Repository):
     def __init__(self, supabase_client):
         self.db = supabase_client
@@ -158,12 +159,9 @@ class UserUsage(Repository):
                 return False, False
 
         except Exception as e:
-            logger.info(matching_customers)
-            logger.error(e)
-            logger.error(
-                "Error while checking if user is a premium user. Stripe needs to be configured."
+            logger.info(
+                "Stripe needs to be configured if you want to have the premium features"
             )
-            logger.error(e)
             return False, True
 
     def get_user_settings(self, user_id):
@@ -267,11 +265,8 @@ class UserUsage(Repository):
         """
         Increment the user's requests count for a specific day
         """
-        current = self.get_user_requests_count_for_day(user_id, date)
 
-        self.update_user_request_count(
-            user_id, daily_requests_count=current + number, date=date
-        )
+        self.update_user_request_count(user_id, daily_requests_count=number, date=date)
 
     def update_user_request_count(self, user_id, daily_requests_count, date):
         response = (

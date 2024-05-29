@@ -7,10 +7,9 @@ import {
   getBrain,
   getBrains,
   getBrainUsers,
-  getDefaultBrain,
   getDocsFromQuestion,
+  getIntegrationBrains,
   getPublicBrains,
-  setAsDefaultBrain,
   Subscription,
   updateBrain,
   updateBrainAccess,
@@ -30,7 +29,6 @@ export const useBrainApi = () => {
     createBrain: async (brain: CreateBrainInput) =>
       createBrain(brain, axiosInstance),
     deleteBrain: async (id: string) => deleteBrain(id, axiosInstance),
-    getDefaultBrain: async () => getDefaultBrain(axiosInstance),
     getBrains: async () => getBrains(axiosInstance),
     getBrain: async (id: string) => getBrain(id, axiosInstance),
     addBrainSubscriptions: async (
@@ -44,8 +42,6 @@ export const useBrainApi = () => {
       userEmail: string,
       subscription: SubscriptionUpdatableProperties
     ) => updateBrainAccess(brainId, userEmail, subscription, axiosInstance),
-    setAsDefaultBrain: async (brainId: string) =>
-      setAsDefaultBrain(brainId, axiosInstance),
     updateBrain: async (brainId: string, brain: UpdateBrainInput) =>
       updateBrain(brainId, brain, axiosInstance),
     getPublicBrains: async () => getPublicBrains(axiosInstance),
@@ -55,5 +51,6 @@ export const useBrainApi = () => {
       brainId: string,
       secrets: Record<string, string>
     ) => updateBrainSecrets(brainId, secrets, axiosInstance),
+    getIntegrationBrains: async () => getIntegrationBrains(axiosInstance),
   };
 };

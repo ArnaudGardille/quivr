@@ -22,8 +22,11 @@ export const addBrainDefaultValues: CreateBrainInput = {
       required: [],
     },
     secrets: [],
+    raw: false,
+    jq_instructions: "",
   },
   connected_brains_ids: [],
+  integration: undefined,
 };
 
 export const defaultModel: Model = "gpt-3.5-turbo";

@@ -1,5 +1,851 @@
 # Changelog
 
+## 0.0.257 (2024-05-28)
+
+## What's Changed
+* Add Privacy & Compliance Documentation by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2620
+* docs(security): added compliance by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2621
+* fix(frontend): upgrade button on user page by @Zewed in https://github.com/QuivrHQ/quivr/pull/2623
+* feat(frontend): Add ThoughtsButton component for displaying thoughts by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2624
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.256...v0.0.257
+
+## 0.0.256 (2024-05-26)
+
+## What's Changed
+* feat(rag): follow-up questions and thoughts with spanish fix by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2618
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.255...v0.0.256
+
+## 0.0.255 (2024-05-24)
+
+## What's Changed
+* feat: Add Google Drive & Sharepoint sync in backend by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2592
+* Revert "feat: Add Google Drive & Sharepoint sync in backend" by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2603
+* Feat/auth-playground by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2605
+* feat: add init to create packages by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2606
+* Add additional modules to celery.autodiscover_tasks() by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2607
+* Feat/celery import by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2608
+* feat: self-reflect brain by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2610
+* feat: ragas improved testing by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2611
+* fix(frontend): less agressive colors by @Zewed in https://github.com/QuivrHQ/quivr/pull/2612
+* fix(frontend): important buttons by @Zewed in https://github.com/QuivrHQ/quivr/pull/2613
+* fix(frontend): fix white colors by @Zewed in https://github.com/QuivrHQ/quivr/pull/2614
+* fix(frontend): using dark mode in tiptap by @ramonzaca in https://github.com/QuivrHQ/quivr/pull/2616
+
+## New Contributors
+* @ramonzaca made their first contribution in https://github.com/QuivrHQ/quivr/pull/2616
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.254...v0.0.255
+
+## 0.0.254 (2024-05-21)
+
+## What's Changed
+* fix:  sender email address in resend_invitation_email.py by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2600
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.253...v0.0.254
+
+## 0.0.253 (2024-05-14)
+
+## What's Changed
+* fix(frontend): Implement persistent dark mode setting and & Implement persistent dark mode setting by @elazarnaaman in https://github.com/QuivrHQ/quivr/pull/2423
+* fix(frontend): hover effect on profile Button by @Zewed in https://github.com/QuivrHQ/quivr/pull/2587
+* fix(frontend): user invite UI on Mobile by @Zewed in https://github.com/QuivrHQ/quivr/pull/2586
+* feat: Update ChatLiteLLM model and add RLS optimization for notifications by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2591
+
+## New Contributors
+* @elazarnaaman made their first contribution in https://github.com/QuivrHQ/quivr/pull/2423
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.252...v0.0.253
+
+## 0.0.252 (2024-05-13)
+
+## What's Changed
+* docs: Update GPT4 documentation with available tools and use cases by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2580
+* docs: Add docstrings to integration brains by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2582
+* fix: Update import statements for OllamaEmbeddings by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2584
+* feat: Add support for gpt-4o model by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2589
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.251...v0.0.252
+
+## 0.0.251 (2024-05-10)
+
+## What's Changed
+* feat(tool): Add URLReaderTool by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2577
+* feat(email): Add email sender tool and update image generator tool by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2579
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.250...v0.0.251
+
+## 0.0.250 (2024-05-10)
+
+## What's Changed
+* feat(gpt4): Add search functionality by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2566
+* [ImgBot] Optimize images by @imgbot in https://github.com/QuivrHQ/quivr/pull/2568
+* feat(gpt4): image generation by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2569
+* fix(front): Add NEXT_PUBLIC_AUTH_MODES to .env.example by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2570
+* fix: NEXT_PUBLIC_AUTH_MODES in docker-compose.yml by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2572
+* docs: Add Supabase configuration documentation by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2574
+* docs(gpt4): Update GPT-4 Documentation by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2573
+* chore: tools by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2575
+* feat(brave-search): Update GPT4Brain tools and add WebSearchTool by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2576
+
+## New Contributors
+* @imgbot made their first contribution in https://github.com/QuivrHQ/quivr/pull/2568
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.249...v0.0.250
+
+## 0.0.249 (2024-05-08)
+
+## What's Changed
+* feat(crawler): Add Playwright for web crawling by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2562
+* ci(ecr): added build to public ecr by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2564
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.248...v0.0.249
+
+## 0.0.248 (2024-05-07)
+
+## What's Changed
+* fix: utf8 encoding by @chloedia in https://github.com/QuivrHQ/quivr/pull/2555
+* feat(celery): moved assistant summary to celery by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2557
+* Revert "feat(celery): moved assistant summary to celery" by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2558
+
+## New Contributors
+* @chloedia made their first contribution in https://github.com/QuivrHQ/quivr/pull/2555
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.247...v0.0.248
+
+## 0.0.247 (2024-05-07)
+
+## What's Changed
+* feat(frontend): add notifications for document uploads by @Zewed in https://github.com/QuivrHQ/quivr/pull/2549
+* Update install.mdx by @dazeb in https://github.com/QuivrHQ/quivr/pull/2552
+* fix(frontend): fix notifications issues by @Zewed in https://github.com/QuivrHQ/quivr/pull/2551
+* chore(ci): Update PR title linting workflow by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2553
+
+## New Contributors
+* @dazeb made their first contribution in https://github.com/QuivrHQ/quivr/pull/2552
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.246...v0.0.247
+
+## 0.0.246 (2024-05-04)
+
+## What's Changed
+* Enable Porter Application theodo-backend by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2537
+* Enable Porter Application theodo-frontend by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2538
+* Add config parameter to conversational_qa_chain by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2540
+* feat(notion): update doc by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2542
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.245...v0.0.246
+
+## 0.0.245 (2024-05-03)
+
+## What's Changed
+* feat(user): Delete User Data from frontend by @Zewed in https://github.com/QuivrHQ/quivr/pull/2476
+* feat(backend): Add a pre_pring on Connection polling to handle disconnection by @dmourot in https://github.com/QuivrHQ/quivr/pull/2534
+* feat(llama-parse): improve prompt by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2535
+* feat(brain): Add ProxyBrain integration by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2536
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.244...v0.0.245
+
+## 0.0.244 (2024-05-02)
+
+## What's Changed
+* fix: Update parsing instruction in common.py by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2531
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.243...v0.0.244
+
+## 0.0.243 (2024-05-01)
+
+## What's Changed
+* fix: Refactor chat_service.py and remove unused code by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2530
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.242...v0.0.243
+
+## 0.0.242 (2024-05-01)
+
+## What's Changed
+* feat(notifications): implemented notifications with RLS and realtime by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2525
+* chore: packages by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2527
+* Enable Porter Application production by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2528
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.241...v0.0.242
+
+## 0.0.241 (2024-05-01)
+
+## What's Changed
+* feat(llamaparse): Add Llama Parse integration for complex document parsing by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2517
+* Delete Porter Application quivr-back by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2519
+* Delete Porter Application quivr-demo-front by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2520
+* Enable Porter Application preview by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2521
+* Enable Porter Application preview-frontend by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2522
+* feat(frontend): citations & sources by @Zewed in https://github.com/QuivrHQ/quivr/pull/2523
+* Fix: citation handling in ChatItem component by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2524
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.240...v0.0.241
+
+## 0.0.240 (2024-04-29)
+
+## What's Changed
+* feat(supabase): Add logging statements and refactor Supabase client creation by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2514
+* feat(backend): use SQLAlchemy instead od supabase API by @dmourot in https://github.com/QuivrHQ/quivr/pull/2516
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.239...v0.0.240
+
+## 0.0.239 (2024-04-28)
+
+## What's Changed
+* feat(citations): system added by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2498
+* feat(frontend): add nb of knowledges per brain by @Zewed in https://github.com/QuivrHQ/quivr/pull/2502
+* docs: Update links in mint.json to add api by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2504
+* feat(docker): Update Dockerfile to install Supabase CLI by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2505
+* fix(frontend): fix some next errors by @Zewed in https://github.com/QuivrHQ/quivr/pull/2503
+* feat(frontend): show remaining credits by @Zewed in https://github.com/QuivrHQ/quivr/pull/2495
+* feat(embedding): keeping citations by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2506
+* fix(metadata): Removed citation from metadata by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2507
+* Add ci-migration script by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2508
+* Feat/migration ci 2 by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2509
+* Enable Porter Application quivr-com-backend by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2510
+* Enable Porter Application quivr-com by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2511
+* feat(profiler): Add pyinstrument package and update Makefile and backend code by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2512
+* feat(db): Add Supabase client and database instances caching by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2513
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.238...v0.0.239
+
+## 0.0.238 (2024-04-25)
+
+## What's Changed
+* Enable Porter Application cherry-pick-backend by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2492
+* Enable Porter Application cherry-pick-frontend by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2493
+* feat: Add telemetry ping task to celery worker and main.py by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2494
+* fix(backend): compute history only if needed and put some cache to remove some call… by @dmourot in https://github.com/QuivrHQ/quivr/pull/2497
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.237...v0.0.238
+
+## 0.0.237 (2024-04-24)
+
+## What's Changed
+* docs: Add environment variables, increase user usage, and add new models by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2481
+* fix(frontend): Warning for Quivr Assistants by @Zewed in https://github.com/QuivrHQ/quivr/pull/2479
+* fix(frontend): better UI for Onboarding by @Zewed in https://github.com/QuivrHQ/quivr/pull/2477
+* docs: add new configuration items by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2483
+* Revert "fix(frontend): better UI for Onboarding" by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2485
+* feat(reranker): Add flashrank and contextual compression retriever by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2480
+* feat(history): max tokens in the history provided by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2487
+* feat: Update chunk overlap to 200 by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2488
+* docs: Add reranking configuration guide by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2489
+* docs: Update telemetry configuration in Quivr by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2490
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.236...v0.0.237
+
+## 0.0.236 (2024-04-23)
+
+## What's Changed
+* feat(docs): update to new by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2465
+* feat(docs): Add new brain files and update navigation by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2467
+* Feat/docs category brains agents by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2469
+* fix(docs): update doc by @Zewed in https://github.com/QuivrHQ/quivr/pull/2470
+* feat(digital-ocean): Update deployment instructions for Digital Ocean by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2472
+* docs(digital-ocean): added missing photo by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2473
+* docs: Update brain documentation and images by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2475
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.235...v0.0.236
+
+## 0.0.235 (2024-04-21)
+
+## What's Changed
+* fix(sources): Remove duplicate sources and add metadata to model response by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2462
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.234...v0.0.235
+
+## 0.0.234 (2024-04-21)
+
+## What's Changed
+* fix(gpt4): Refactor GPT4Brain and KnowledgeBrainQA classes to add non-streaming-saving-answer by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2460
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.233...v0.0.234
+
+## 0.0.233 (2024-04-21)
+
+## What's Changed
+* refactor: reorg files in backend by @MaximeThoonsen in https://github.com/QuivrHQ/quivr/pull/2449
+* Revert "refactor: reorg files in backend" by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2456
+* refactor: Refacto code #1 by @MaximeThoonsen in https://github.com/QuivrHQ/quivr/pull/2458
+* refactor: reorg the files #2 by @MaximeThoonsen in https://github.com/QuivrHQ/quivr/pull/2457
+* feat(gpt4): Add chat service and generate answer method to GPT4Brain class by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2459
+
+## New Contributors
+* @MaximeThoonsen made their first contribution in https://github.com/QuivrHQ/quivr/pull/2449
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.232...v0.0.233
+
+## 0.0.232 (2024-04-19)
+
+## What's Changed
+* Update CPU and memory settings in task definition files by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2450
+* fix: Fix error message in SummaryAssistant class by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2453
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.231...v0.0.232
+
+## 0.0.231 (2024-04-19)
+
+## What's Changed
+* feat(assistants): Add user usage update and pricing calculation to ITO assistant by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2433
+* feat(assistant): improve prompt summary by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2435
+* feat(assistants): Add PDF generation functionality and nice emails by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2436
+* feat(analytics): rely on sql rather that python loop for brains by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2437
+* fix(assistant): summary now can output 2000 tokens by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2440
+* feat(assistant): check if key of file is same as filename uploaded by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2439
+* feat: Update Docker build commands and dependencies by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2441
+* feat(rag): Refactor DEFAULT_DOCUMENT_PROMPT in quivr_rag.py by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2442
+* Enable Porter Application quivr-back by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2443
+* Enable Porter Application quivr-demo-front by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2444
+* fix(assistants): brain id is null by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2445
+* feat(summary): improve prompt to get more insights by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2446
+* feat(aws): Update CPU and memory configurations for task definitions by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2447
+* feat(frontend): Quivr Assistants by @Zewed in https://github.com/QuivrHQ/quivr/pull/2448
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.230...v0.0.231
+
+## 0.0.230 (2024-04-16)
+
+## What's Changed
+* feat(backend): add RAG evaluation using Ragas by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2429
+* feat(assistants):  Add new input models for boolean, number, select text, and select number by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2432
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.229...v0.0.230
+
+## 0.0.229 (2024-04-12)
+
+## What's Changed
+* feat: optimization calls by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2417
+* feat: Add assistant module and remove ingestion module by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2420
+* feat: assistants by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2421
+* feat: Add tags to AssistantOutput classes by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2425
+* feat: Add icon and description to assistant by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2426
+* feat: llamaparse & diff agent by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2427
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.228...v0.0.229
+
+## 0.0.228 (2024-04-10)
+
+## What's Changed
+* fix(frontend): phone display issues by @Zewed in https://github.com/QuivrHQ/quivr/pull/2386
+* Patch 1 by @llwp in https://github.com/QuivrHQ/quivr/pull/2388
+* fix: typo in README.md by @bolens in https://github.com/QuivrHQ/quivr/pull/2391
+* feat(ingestion): Add ingestion module and routes by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2393
+* feat: Add seed ingestions to supabase migrations by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2399
+* feat: Add url_required field to IngestionEntity by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2400
+* Feat: Bibtex file uploads by @colesnic in https://github.com/QuivrHQ/quivr/pull/2398
+* fix: logger level and telemetry function calls by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2409
+* fix: Add integration brain to subscription route by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2410
+* feat(frontend): onboarding V2 by @Zewed in https://github.com/QuivrHQ/quivr/pull/2394
+* fix(frontend): onboardind bug by @Zewed in https://github.com/QuivrHQ/quivr/pull/2414
+* fix(frontend): cleaner fix for onboarding by @Zewed in https://github.com/QuivrHQ/quivr/pull/2415
+* feat(analytics): added analytics page  by @Zewed in https://github.com/QuivrHQ/quivr/pull/2416
+
+## New Contributors
+* @llwp made their first contribution in https://github.com/QuivrHQ/quivr/pull/2388
+* @bolens made their first contribution in https://github.com/QuivrHQ/quivr/pull/2391
+* @colesnic made their first contribution in https://github.com/QuivrHQ/quivr/pull/2398
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.227...v0.0.228
+
+## 0.0.227 (2024-03-28)
+
+## What's Changed
+* fix(backend): invitation with new brains did not work by @Zewed in https://github.com/QuivrHQ/quivr/pull/2378
+* fix(backend): invitation brain bugs by @Zewed in https://github.com/QuivrHQ/quivr/pull/2380
+* fix(frontend): disable knowledge tab by @Zewed in https://github.com/QuivrHQ/quivr/pull/2381
+* fix(frontend): dark mode issues by @Zewed in https://github.com/QuivrHQ/quivr/pull/2382
+* feat(frontend): show icons only on hover except for last message by @Zewed in https://github.com/QuivrHQ/quivr/pull/2377
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.226...v0.0.227
+
+## 0.0.226 (2024-03-21)
+
+## What's Changed
+* feat: Add Mistral models to defineMaxTokens and BrainConfig by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2363
+* feat: mistral by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2365
+* fix(retriever): Update match_vectors sql function to rank chunks in correct order by @dmourot in https://github.com/QuivrHQ/quivr/pull/2367
+* feat(docker image): Docker image Optimized for CPU-only env by @dmourot in https://github.com/QuivrHQ/quivr/pull/2368
+* feat(frontend): dark mode by @Zewed in https://github.com/QuivrHQ/quivr/pull/2369
+* feat(frontend & backend): thumbs for message feedback by @Zewed in https://github.com/QuivrHQ/quivr/pull/2360
+* fix(backend): migration legacy by @Zewed in https://github.com/QuivrHQ/quivr/pull/2370
+* fix(frontend): type stripe casing by @Zewed in https://github.com/QuivrHQ/quivr/pull/2371
+* fix(backend): unsubscribe from brain by @Zewed in https://github.com/QuivrHQ/quivr/pull/2373
+* feat(frontend): onboarding form by @Zewed in https://github.com/QuivrHQ/quivr/pull/2342
+* fix(frontend): onBoarding issue by @Zewed in https://github.com/QuivrHQ/quivr/pull/2374
+
+## New Contributors
+* @dmourot made their first contribution in https://github.com/QuivrHQ/quivr/pull/2367
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.225...v0.0.226
+
+## 0.0.225 (2024-03-15)
+
+## What's Changed
+* fix(frontend): bigger icon on message row by @Zewed in https://github.com/QuivrHQ/quivr/pull/2345
+* fix(frontend): remove brains usage in user page by @Zewed in https://github.com/QuivrHQ/quivr/pull/2349
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.224...v0.0.225
+
+## 0.0.224 (2024-03-15)
+
+## What's Changed
+* feat(frontend): add discord link by @Zewed in https://github.com/QuivrHQ/quivr/pull/2343
+* fix(frontend): upgrade to plus  by @Zewed in https://github.com/QuivrHQ/quivr/pull/2346
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.223...v0.0.224
+
+## 0.0.223 (2024-03-13)
+
+## What's Changed
+* chore: update packages backend by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2339
+* feat: Add optional fields to UserIdentity and UserUpdatableProperties by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2341
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.222...v0.0.223
+
+## 0.0.222 (2024-03-09)
+
+## What's Changed
+* feat: Update langchain.prompts and langchain_core.messages modules by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2326
+* feat(frontend): social buttons by @Zewed in https://github.com/QuivrHQ/quivr/pull/2325
+* fix(frontend): upgrade to plus button by @Zewed in https://github.com/QuivrHQ/quivr/pull/2324
+* fix(frontend): maximum amount of brains reached by @Zewed in https://github.com/QuivrHQ/quivr/pull/2323
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.221...v0.0.222
+
+## 0.0.221 (2024-03-07)
+
+## What's Changed
+* feat: seed updated by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2313
+* fix(frontend): allow model change by @Zewed in https://github.com/QuivrHQ/quivr/pull/2317
+* fix(frontend): mention list by @Zewed in https://github.com/QuivrHQ/quivr/pull/2315
+* fix(frontend): studio to brain studio by @Zewed in https://github.com/QuivrHQ/quivr/pull/2316
+* feat(frontend): add help tooltip for model selection by @Zewed in https://github.com/QuivrHQ/quivr/pull/2318
+* fix(frontend): page header studio to brain studio by @Zewed in https://github.com/QuivrHQ/quivr/pull/2319
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.220...v0.0.221
+
+## 0.0.220 (2024-03-06)
+
+## What's Changed
+* fix(frontend): brain name by @Zewed in https://github.com/QuivrHQ/quivr/pull/2311
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.219...v0.0.220
+
+## 0.0.219 (2024-03-06)
+
+## What's Changed
+* feat: Update to newest version of litellm by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2307
+* fix(frontend): small renaiming chat to thread by @Zewed in https://github.com/QuivrHQ/quivr/pull/2306
+* feat(frontend): brain Catalogue by @Zewed in https://github.com/QuivrHQ/quivr/pull/2303
+* feat(frontend): 404 redirection by @Zewed in https://github.com/QuivrHQ/quivr/pull/2309
+* fix(frontend): old brain legacy by @Zewed in https://github.com/QuivrHQ/quivr/pull/2310
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.218...v0.0.219
+
+## 0.0.218 (2024-03-05)
+
+## What's Changed
+* feat: doc as integration by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2297
+* fix(rag): add api_base by @niels-garve in https://github.com/QuivrHQ/quivr/pull/2289
+* fix(frontend): login bug by @Zewed in https://github.com/QuivrHQ/quivr/pull/2300
+
+## New Contributors
+* @niels-garve made their first contribution in https://github.com/QuivrHQ/quivr/pull/2289
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.217...v0.0.218
+
+## 0.0.217 (2024-03-04)
+
+## What's Changed
+* fix(frontend): fix home page redirection by @Zewed in https://github.com/QuivrHQ/quivr/pull/2295
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.216...v0.0.217
+
+## 0.0.216 (2024-03-04)
+
+## What's Changed
+* feat: Update chunk_size in File model by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2281
+* fix(frontend): double file upload on drag and drop by @Zewed in https://github.com/QuivrHQ/quivr/pull/2284
+* fix(frontend): click anywhere on drop zone to upload file by @Zewed in https://github.com/QuivrHQ/quivr/pull/2285
+* fix(frontend): smalls on thread section by @Zewed in https://github.com/QuivrHQ/quivr/pull/2286
+* fix(frontend): remove tests by @Zewed in https://github.com/QuivrHQ/quivr/pull/2287
+* feat(frontend): better UI/UX on select brain by @Zewed in https://github.com/QuivrHQ/quivr/pull/2288
+* feat(frontend): add brain icon on brain list by @Zewed in https://github.com/QuivrHQ/quivr/pull/2292
+* fix(frontend): whitespace on firefox by @Zewed in https://github.com/QuivrHQ/quivr/pull/2293
+* fix(frontend): remove unused stuff by @Zewed in https://github.com/QuivrHQ/quivr/pull/2282
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.215...v0.0.216
+
+## 0.0.215 (2024-03-01)
+
+## What's Changed
+* fix(frontend): message info box  by @Zewed in https://github.com/QuivrHQ/quivr/pull/2277
+* fix(frontend): see knowledge in custom brains by @Zewed in https://github.com/QuivrHQ/quivr/pull/2278
+* fix(frontend): fix disabled knwoledge tab by @Zewed in https://github.com/QuivrHQ/quivr/pull/2280
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.214...v0.0.215
+
+## 0.0.214 (2024-02-29)
+
+## What's Changed
+* fix(frontend): revamp quivr studio by @Zewed in https://github.com/QuivrHQ/quivr/pull/2274
+* fix(frontend): zindex and radius on single selector component by @Zewed in https://github.com/QuivrHQ/quivr/pull/2276
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.213...v0.0.214
+
+## 0.0.213 (2024-02-28)
+
+## What's Changed
+* feat(notion): added custom integration by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2268
+* feat: Remove constraints and add foreign key references to brain tables by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2273
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.212...v0.0.213
+
+## 0.0.212 (2024-02-26)
+
+## What's Changed
+* feat: new landing page by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2264
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.211...v0.0.212
+
+## 0.0.211 (2024-02-24)
+
+## What's Changed
+* fix: ollama migration documentation by @bidoubiwa in https://github.com/QuivrHQ/quivr/pull/2248
+* Update Sentry configuration and ignore file by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2250
+* Fix Sentry DSN environment variable by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2251
+* fix(sentry): Refactor GlobalError component to use arrow function syntax by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2252
+* fix: Update Sentry configuration to use NEXT_PUBLIC_SENTRY_DSN by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2254
+* feat(frontend): integrate octolane by @Zewed in https://github.com/QuivrHQ/quivr/pull/2256
+* fix(frontend): better search bar and chat box by @Zewed in https://github.com/QuivrHQ/quivr/pull/2255
+* feat(frontend): sources per messages by @Zewed in https://github.com/QuivrHQ/quivr/pull/2253
+* feat(sentry): remove health endpoint by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2257
+* Add octolane.com to Content Security Policy by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2258
+* fix(frontend): ui chat box & sources small bug by @Zewed in https://github.com/QuivrHQ/quivr/pull/2260
+* Refactor GitHub workflows by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2261
+
+## New Contributors
+* @bidoubiwa made their first contribution in https://github.com/QuivrHQ/quivr/pull/2248
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.210...v0.0.211
+
+## 0.0.210 (2024-02-22)
+
+## What's Changed
+* feat: Update memory allocation in task definition by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2243
+* fix: get_brain_details API to include user_id parameter by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2242
+* feat(chat): Add follow up questions functionality by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2241
+* Reduce sampling rate for Sentry traces by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2245
+* Revert "feat(chat): Add follow up questions functionality" by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2246
+* Add max_input and max_tokens parameters to KnowledgeBrainQA constructor by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2247
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.209...v0.0.210
+
+## 0.0.209 (2024-02-22)
+
+## What's Changed
+* fix(frontend): fix share brain by @Zewed in https://github.com/QuivrHQ/quivr/pull/2238
+* fix(frontend): don't preselect core brain by @Zewed in https://github.com/QuivrHQ/quivr/pull/2239
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.208...v0.0.209
+
+## 0.0.208 (2024-02-21)
+
+## What's Changed
+* feat: Add pricing calculation method to GPT4Brain class and update user usage in chat controller by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2216
+* Enable Porter Application quivr by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2220
+* Delete Porter Application quivr by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2221
+* Enable Porter Application preview-quivr by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2222
+* Enable Porter Application prod-quivr by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2223
+* feat(brains): added description by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2224
+* feat: Add integration_logo_url to MinimalUserBrainEntity by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2225
+* Add Redis configuration to celery_config.py by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2227
+* Remove unused 'model' variable and logging statements by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2228
+* feat: Add max_files attribute to MinimalUserBrainEntity and BrainsUsers repository by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2229
+* Feature: Add animations to foldable section by @johnfewell in https://github.com/QuivrHQ/quivr/pull/2202
+* feat(frontend): first custom brain live by @Zewed in https://github.com/QuivrHQ/quivr/pull/2226
+* fix(frontend): legacy on foldable section animation pr by @Zewed in https://github.com/QuivrHQ/quivr/pull/2230
+* Fix: API endpoint for getting integration brains by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2231
+* feat: Update dependencies and remove unnecessary logging statements by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2232
+* feat: implement elasticache by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2234
+* fix(frontend): ellipsis overflow on large brain or prompt names by @Zewed in https://github.com/QuivrHQ/quivr/pull/2233
+
+## New Contributors
+* @porter-deployment-app made their first contribution in https://github.com/QuivrHQ/quivr/pull/2220
+* @johnfewell made their first contribution in https://github.com/QuivrHQ/quivr/pull/2202
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.207...v0.0.208
+
+## 0.0.206 (2024-02-19)
+
+## What's Changed
+* feat: Add pricing calculation method to GPT4Brain class and update user usage in chat controller by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2210
+* fix(frontend): click on inputs by @Zewed in https://github.com/QuivrHQ/quivr/pull/2212
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.205...v0.0.206
+
+## 0.0.205 (2024-02-19)
+
+## What's Changed
+* Update ollama.mdx by @zangjiucheng in https://github.com/QuivrHQ/quivr/pull/2196
+* feat(integration): improve by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2199
+* fix(frontend): history to threads by @Zewed in https://github.com/QuivrHQ/quivr/pull/2201
+* feat(custom): big brain by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2198
+* feat: Update system templates with custom personality support by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2209
+
+## New Contributors
+* @zangjiucheng made their first contribution in https://github.com/QuivrHQ/quivr/pull/2196
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.204...v0.0.205
+
+## 0.0.203 (2024-02-15)
+
+## What's Changed
+* feat: 🎸 ocr by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2187
+* feat(lcel): migrated to lcel and pydantic by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2185
+* feat(frontend): new brain creation modal by @Zewed in https://github.com/QuivrHQ/quivr/pull/2192
+* feat(integration): implementation by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2191
+* feat(frontend): new design for brain table by @Zewed in https://github.com/QuivrHQ/quivr/pull/2193
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.202...v0.0.203
+
+## 0.0.202 (2024-02-11)
+
+## What's Changed
+* fix(frontend): change placeholder in chat bar by @Zewed in https://github.com/QuivrHQ/quivr/pull/2177
+* fix(frontend): remove notification banner by @Zewed in https://github.com/QuivrHQ/quivr/pull/2178
+* fix(frontend): remove onboarding questions by @Zewed in https://github.com/QuivrHQ/quivr/pull/2176
+* feat(frontend): new modal for add knowledge by @Zewed in https://github.com/QuivrHQ/quivr/pull/2173
+* Revert "fix(frontend): remove onboarding questions" by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2181
+* fix(frontend): remove onboarding question by @Zewed in https://github.com/QuivrHQ/quivr/pull/2183
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.201...v0.0.202
+
+## 0.0.201 (2024-02-10)
+
+## What's Changed
+* fix: 🐛 session by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2174
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.200...v0.0.201
+
+## 0.0.200 (2024-02-09)
+
+## What's Changed
+* fix(daily-usage): Update daily requests count in UserUsage model by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2171
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.199...v0.0.200
+
+## 0.0.199 (2024-02-08)
+
+## What's Changed
+* feat: 🎸 telemetry by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2169
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.198...v0.0.199
+
+## 0.0.197 (2024-02-07)
+
+## What's Changed
+* fix(prompts): can now be removed by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2154
+* tests: Add tests for deleting prompts by ID by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2156
+* fix(related): removed public brains by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2157
+* perf: ⚡️ signed_url by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2159
+* fix(backend): typo in word response by @untilhamza in https://github.com/QuivrHQ/quivr/pull/2158
+* fix(frontend): better UI for phone device by @Zewed in https://github.com/QuivrHQ/quivr/pull/2160
+* fix(frontend): add knwoledge from create brain by @Zewed in https://github.com/QuivrHQ/quivr/pull/2161
+* feat(chunks): now chunk size is saved in database dynamically and not just 500 by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2164
+* fix(frontend): remove related brains for now by @Zewed in https://github.com/QuivrHQ/quivr/pull/2162
+* fix(frontend): can"t choose private or public brains by @Zewed in https://github.com/QuivrHQ/quivr/pull/2163
+* feat(frontend): manage current brain by @Zewed in https://github.com/QuivrHQ/quivr/pull/2165
+* fix(frontend): upgrade my plan by @Zewed in https://github.com/QuivrHQ/quivr/pull/2167
+
+## New Contributors
+* @untilhamza made their first contribution in https://github.com/QuivrHQ/quivr/pull/2158
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.196...v0.0.197
+
+## 0.0.196 (2024-02-07)
+
+## What's Changed
+* feat(frontend): Page Header + Begin of Studio by @Zewed in https://github.com/StanGirard/quivr/pull/2151
+* fix(frontend): overflow brain item by @Zewed in https://github.com/StanGirard/quivr/pull/2153
+
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.195...v0.0.196
+
+## 0.0.195 (2024-02-06)
+
+## What's Changed
+* feat(integrations): integration with Notion in the backend by @StanGirard in https://github.com/StanGirard/quivr/pull/2123
+
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.194...v0.0.195
+
+## 0.0.194 (2024-02-05)
+
+## What's Changed
+* feat(frontend): add a chatbot for users  by @Zewed in https://github.com/StanGirard/quivr/pull/2144
+
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.193...v0.0.194
+
+## 0.0.193 (2024-02-04)
+
+## What's Changed
+* feat(frontend): design changes on user profile by @Zewed in https://github.com/StanGirard/quivr/pull/2140
+* fix(frontend): rename upgrade to plus to upgrade by @Zewed in https://github.com/StanGirard/quivr/pull/2141
+
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.192...v0.0.193
+
+## 0.0.192 (2024-02-02)
+
+## What's Changed
+* feat(frontend): display which brain you are talking to by @Zewed in https://github.com/StanGirard/quivr/pull/2137
+
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.191...v0.0.192
+
+## 0.0.191 (2024-02-01)
+
+## What's Changed
+* fix(frontend): no sources repetition in data panel by @Zewed in https://github.com/StanGirard/quivr/pull/2132
+* fix(frontend): don't show copy icon when thinking by @Zewed in https://github.com/StanGirard/quivr/pull/2133
+
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.190...v0.0.191
+
+## 0.0.190 (2024-01-31)
+
+## What's Changed
+* fix(frontend): Better contrast in Menu by @Zewed in https://github.com/StanGirard/quivr/pull/2119
+* fix(frontend): better chat color and copy icon position by @Zewed in https://github.com/StanGirard/quivr/pull/2121
+* fix(frontend): better visualisation of current path on menu by @Zewed in https://github.com/StanGirard/quivr/pull/2122
+* feat(frontend): uniformize behaviour for metadata panel by @Zewed in https://github.com/StanGirard/quivr/pull/2124
+* fix(frontend): fetch chat only if session exist by @Zewed in https://github.com/StanGirard/quivr/pull/2130
+* fix(frontend): prompt display by @Zewed in https://github.com/StanGirard/quivr/pull/2129
+* fix(frontend): upload knwoledge in brains manegement by @Zewed in https://github.com/StanGirard/quivr/pull/2131
+
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.189...v0.0.190
+
+## 0.0.189 (2024-01-30)
+
+## What's Changed
+* feat(frontend): design menu by @Zewed in https://github.com/StanGirard/quivr/pull/2116
+* fix(frontend): fix z index popover on add knwoledge modal by @Zewed in https://github.com/StanGirard/quivr/pull/2118
+
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.188...v0.0.189
+
+## 0.0.188 (2024-01-29)
+
+## What's Changed
+* fix: 🐛 upload by @StanGirard in https://github.com/StanGirard/quivr/pull/2112
+* feat(frontend): add sources to metadata by @Zewed in https://github.com/StanGirard/quivr/pull/2113
+
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.187...v0.0.188
+
+## 0.0.187 (2024-01-28)
+
+## What's Changed
+* feat: 🎸 user-limits by @StanGirard in https://github.com/StanGirard/quivr/pull/2104
+* fix: 🐛 brains by @StanGirard in https://github.com/StanGirard/quivr/pull/2107
+* feat(frontend): chat page ui/ux design by @Zewed in https://github.com/StanGirard/quivr/pull/2106
+* Fix typo of UI: Ressources ==> Resources by @iharel in https://github.com/StanGirard/quivr/pull/2109
+* fix(frontend): fix li markdown on chat by @Zewed in https://github.com/StanGirard/quivr/pull/2110
+
+## New Contributors
+* @iharel made their first contribution in https://github.com/StanGirard/quivr/pull/2109
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.186...v0.0.187
+
+## 0.0.186 (2024-01-27)
+
+## What's Changed
+* fix(frontend): click on mention list on search bar in modal bug by @Zewed in https://github.com/StanGirard/quivr/pull/2098
+* fix(frontend): remove dark theme by @Zewed in https://github.com/StanGirard/quivr/pull/2100
+* fix(frontend): delete brain by @Zewed in https://github.com/StanGirard/quivr/pull/2101
+* feat(14k): done by @StanGirard in https://github.com/StanGirard/quivr/pull/2102
+
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.185...v0.0.186
+
+## 0.0.185 (2024-01-27)
+
+## What's Changed
+* fix: 🐛 brain by @StanGirard in https://github.com/StanGirard/quivr/pull/2096
+* feat(frontend): search modal - remove parameters and explore buttons by @Zewed in https://github.com/StanGirard/quivr/pull/2094
+* fix: 🐛 tests by @StanGirard in https://github.com/StanGirard/quivr/pull/2095
+
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.184...v0.0.185
+
+## 0.0.184 (2024-01-26)
+
+## What's Changed
+* feat(panel): added by @Zewed in https://github.com/StanGirard/quivr/pull/2088
+* feat: 🎸 api by @StanGirard in https://github.com/StanGirard/quivr/pull/2078
+* fix(frontend): clear message input on submit by @Zewed in https://github.com/StanGirard/quivr/pull/2087
+* fix: 🐛 related by @StanGirard in https://github.com/StanGirard/quivr/pull/2090
+* feat: Added translation status badge from inlang by @NilsJacobsen in https://github.com/StanGirard/quivr/pull/2080
+* fix(streaming): Data Truncation Issue in useHandleStream Function by @openperf in https://github.com/StanGirard/quivr/pull/2079
+* feat: 🎸 sources by @StanGirard in https://github.com/StanGirard/quivr/pull/2092
+* fix(frontend): clean related Brains useEffect by @Zewed in https://github.com/StanGirard/quivr/pull/2091
+
+## New Contributors
+* @openperf made their first contribution in https://github.com/StanGirard/quivr/pull/2079
+
+**Full Changelog**: https://github.com/StanGirard/quivr/compare/v0.0.183...v0.0.184
+
 ## 0.0.183 (2024-01-24)
 
 ## What's Changed

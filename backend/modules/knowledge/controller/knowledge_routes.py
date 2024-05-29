@@ -10,8 +10,8 @@ from modules.brain.service.brain_authorization_service import (
 )
 from modules.brain.service.brain_vector_service import BrainVectorService
 from modules.knowledge.service.knowledge_service import KnowledgeService
+from modules.upload.service.generate_file_signed_url import generate_file_signed_url
 from modules.user.entity.user_identity import UserIdentity
-from repository.files.generate_file_signed_url import generate_file_signed_url
 
 knowledge_router = APIRouter()
 logger = get_logger(__name__)
@@ -33,7 +33,6 @@ async def list_knowledge_in_brain_endpoint(
     validate_brain_authorization(brain_id=brain_id, user_id=current_user.id)
 
     knowledges = knowledge_service.get_all_knowledge(brain_id)
-    logger.info(f"List of knowledge from knowledge table: {knowledges}")
 
     return {"knowledges": knowledges}
 

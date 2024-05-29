@@ -4,7 +4,6 @@ secondbrain/
 .streamlit/secrets.toml
 **/*.pyc
 toto.txt
-*.ipynb
 log.txt
 
 backend/venv
@@ -74,3 +73,15 @@ volumes/db/data/
 volumes/storage/stub/stub/quivr/*
 supabase/migrations/20240103191539_private.sql
 supabase/20240103191539_private.sql
+paulgraham.py
+.env_test
+supabase/seed-airwallex.sql
+airwallexpayouts.py
+application.log
+backend/celerybeat-schedule.db
+
+backend/application.log.*
+backend/score.json
+backend/modules/assistant/ito/utils/simple.pdf
+backend/modules/sync/controller/credentials.json
+backend/.env.test

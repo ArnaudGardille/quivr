@@ -15,7 +15,7 @@ interface IconProps {
   classname?: string;
   hovered?: boolean;
   handleHover?: boolean;
-  onClick?: () => void;
+  onClick?: () => void | Promise<void>;
 }
 
 export const Icon = ({
@@ -40,11 +40,11 @@ export const Icon = ({
   return (
     <IconComponent
       className={`
-      ${classname ?? ""} 
-      ${styles[size] ?? ""} 
-      ${styles[color] ?? ""}
-      ${disabled ? styles.disabled ?? "" : ""}
-      ${iconHovered ? styles.hovered ?? "" : ""}
+      ${classname} 
+      ${styles[size]} 
+      ${styles[color]}
+      ${disabled ? styles.disabled : ""}
+      ${iconHovered || hovered ? styles.hovered : ""}
       `}
       onMouseEnter={() => handleHover && setIconHovered(true)}
       onMouseLeave={() => handleHover && setIconHovered(false)}

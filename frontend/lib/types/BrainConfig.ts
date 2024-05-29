@@ -4,11 +4,11 @@ import { ApiBrainDefinition } from "../api/brain/types";
 
 export const brainStatuses = ["private", "public"] as const;
 
-export type BrainStatus = (typeof brainStatuses)[number];
-
-export const brainTypes = ["doc", "api", "composite"] as const;
+export const brainTypes = ["doc", "api", "composite", "integration"] as const;
 
 export type BrainType = (typeof brainTypes)[number];
+
+export type BrainStatus = (typeof brainStatuses)[number];
 
 export type Model = (typeof freeModels)[number];
 
@@ -39,8 +39,14 @@ export type BrainConfig = {
 
 export const openAiFreeModels = [
   "gpt-3.5-turbo",
+  "gpt-4o",
   "gpt-3.5-turbo-1106",
   "gpt-3.5-turbo-16k",
+  "gpt-4-0125-preview",
+  "gpt-3.5-turbo-0125",
+  "mistral/mistral-small",
+  "mistral/mistral-medium",
+  "mistral/mistral-large-latest",
 ] as const;
 
 export const openAiPaidModels = [...openAiFreeModels, "gpt-4"] as const;

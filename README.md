@@ -5,7 +5,7 @@
 </div>
 
 [![Discord Follow](https://dcbadge.vercel.app/api/server/HUpRgp2HG8?style=flat)](https://discord.gg/HUpRgp2HG8)
-[![GitHub Repo stars](https://img.shields.io/github/stars/stangirard/quivr?style=social)](https://github.com/stangirard/quivr)
+[![GitHub Repo stars](https://img.shields.io/github/stars/quivrhq/quivr?style=social)](https://github.com/quivrhq/quivr)
 [![Twitter Follow](https://img.shields.io/twitter/follow/StanGirard?style=social)](https://twitter.com/_StanGirard)
 
 Quivr, your second brain, utilizes the power of GenerativeAI to be your personal assistant ! Think of it as Obsidian, but turbocharged with AI capabilities.
@@ -25,7 +25,7 @@ Quivr, your second brain, utilizes the power of GenerativeAI to be your personal
 
 ## Demo Highlights 🎥
 
-https://github.com/StanGirard/quivr/assets/19614572/a6463b73-76c7-4bc0-978d-70562dca71f5
+https://github.com/quivrhq/quivr/assets/19614572/a6463b73-76c7-4bc0-978d-70562dca71f5
 
 ## Getting Started 🚀
 
@@ -56,7 +56,7 @@ You can find the installation video [here](https://www.youtube.com/watch?v=cXBa6
 - **Step 1**: Clone the repository:
 
   ```bash
-  git clone https://github.com/StanGirard/Quivr.git && cd Quivr
+  git clone https://github.com/quivrhq/quivr.git && cd quivr
   ```
 
 - **Step 2**: Copy the `.env.example` files
@@ -75,15 +75,15 @@ You can find the installation video [here](https://www.youtube.com/watch?v=cXBa6
 
   You just need to update the `OPENAI_API_KEY` variable in the `.env` file. You can get your API key [here](https://platform.openai.com/api-keys). You need to create an account first. And put your credit card information. Don't worry, you won't be charged unless you use the API. You can find more information about the pricing [here](https://openai.com/pricing/).
 
-  > Don't want to use OpenAI and want to use Ollama instead for a completely private experience? You can find the instructions [here](https://docs.quivr.app/developers/contribution/llm/ollama).
 
 - **Step 4**: Launch the project
 
   ```bash
-  supabase start
+  cd backend && supabase start
   ```
   and then 
   ```bash
+  cd ../
   docker compose pull
   docker compose up
   ```
@@ -118,25 +118,29 @@ You can find the installation video [here](https://www.youtube.com/watch?v=cXBa6
 ## Contributors ✨
 
 Thanks go to these wonderful people:
-<a href="https://github.com/stangirard/quivr/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=stangirard/quivr" />
+<a href="https://github.com/quivrhq/quivr/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=quivrhq/quivr" />
 </a>
 
 ## Contribute 🤝
 
 Did you get a pull request? Open it, and we'll review it as soon as possible. Check out our project board [here](https://github.com/users/StanGirard/projects/5) to see what we're currently focused on, and feel free to bring your fresh ideas to the table!
 
-- [Open Issues](https://github.com/StanGirard/quivr/issues)
-- [Open Pull Requests](https://github.com/StanGirard/quivr/pulls)
-- [Good First Issues](https://github.com/StanGirard/quivr/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
-- [Frontend Issues](https://github.com/StanGirard/quivr/issues?q=is%3Aopen+is%3Aissue+label%3Afrontend)
-- [Backend Issues](https://github.com/StanGirard/quivr/issues?q=is%3Aopen+is%3Aissue+label%3Abackend)
+- [Open Issues](https://github.com/quivrhq/quivr/issues)
+- [Open Pull Requests](https://github.com/quivrhq/quivr/pulls)
+- [Good First Issues](https://github.com/quivrhq/quivr/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
+- [Frontend Issues](https://github.com/quivrhq/quivr/issues?q=is%3Aopen+is%3Aissue+label%3Afrontend)
+- [Backend Issues](https://github.com/quivrhq/quivr/issues?q=is%3Aopen+is%3Aissue+label%3Abackend)
 - [Translate](https://docs.quivr.app/docs/Developers/contribution/guidelines#translations)
 
 ## Partners ❤️
 
 This project would not be possible without the support of our partners. Thank you for your support!
 
+
+<a href="https://ycombinator.com/">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Y_Combinator_logo.svg/1200px-Y_Combinator_logo.svg.png" alt="YCombinator" style="padding: 10px" width="70px">
+</a>
 <a href="https://www.theodo.fr/">
   <img src="https://avatars.githubusercontent.com/u/332041?s=200&v=4" alt="Theodo" style="padding: 10px" width="70px">
 </a>
@@ -147,4 +151,4 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENS
 
 ## Stars History 📈
 
-[![Star History Chart](https://api.star-history.com/svg?repos=StanGirard/quivr&type=Timeline)](https://star-history.com/#StanGirard/quivr&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=quivrhq/quivr&type=Timeline)](https://star-history.com/#quivrhq/quivr&Timeline)

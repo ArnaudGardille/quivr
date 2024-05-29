@@ -1,20 +1,27 @@
-from langchain.embeddings.ollama import OllamaEmbeddings
-from langchain.embeddings.openai import OpenAIEmbeddings
-from llm.api_brain_qa import APIBrainQA
-from llm.composite_brain_qa import CompositeBrainQA
-from llm.knowledge_brain_qa import KnowledgeBrainQA
 from logger import get_logger
-from models.settings import BrainSettings, get_supabase_client
 from modules.brain.entity.brain_entity import BrainType, RoleEnum
+from modules.brain.integrations.Big.Brain import BigBrain
+from modules.brain.integrations.GPT4.Brain import GPT4Brain
+from modules.brain.integrations.Multi_Contract.Brain import MultiContractBrain
+from modules.brain.integrations.Notion.Brain import NotionBrain
+from modules.brain.integrations.Proxy.Brain import ProxyBrain
+from modules.brain.integrations.Self.Brain import SelfBrain
+from modules.brain.integrations.SQL.Brain import SQLBrain
+from modules.brain.knowledge_brain_qa import KnowledgeBrainQA
+from modules.brain.service.api_brain_definition_service import ApiBrainDefinitionService
 from modules.brain.service.brain_authorization_service import (
     validate_brain_authorization,
 )
 from modules.brain.service.brain_service import BrainService
+from modules.brain.service.integration_brain_service import (
+    IntegrationBrainDescriptionService,
+)
 from modules.chat.controller.chat.interface import ChatInterface
 from modules.chat.service.chat_service import ChatService
-from vectorstore.supabase import CustomSupabaseVectorStore
 
 chat_service = ChatService()
+api_brain_definition_service = ApiBrainDefinitionService()
+integration_brain_description_service = IntegrationBrainDescriptionService()
 
 logger = get_logger(__name__)
 
@@ -22,10 +29,26 @@ models_supporting_function_calls = [
     "gpt-4",
     "gpt-4-1106-preview",
     "gpt-4-0613",
-    "gpt-3.5-turbo-1106",
+    "gpt-3.5-turbo-0125",
     "gpt-3.5-turbo-1106",
     "gpt-3.5-turbo-0613",
+    "gpt-4-0125-preview",
+    "gpt-3.5-turbo",
+    "gpt-4-turbo",
+    "gpt-4o",
 ]
+
+
+integration_list = {
+    "notion": NotionBrain,
+    "gpt4": GPT4Brain,
+    "sql": SQLBrain,
+    "big": BigBrain,
+    "doc": KnowledgeBrainQA,
+    "proxy": ProxyBrain,
+    "self": SelfBrain,
+    "multi-contract": MultiContractBrain,
+}
 
 brain_service = BrainService()
 
@@ -41,93 +64,40 @@ class BrainfulChat(ChatInterface):
 
     def get_answer_generator(
         self,
-        brain_id,
+        brain,
         chat_id,
         model,
-        max_tokens,
         temperature,
         streaming,
         prompt_id,
         user_id,
-        chat_question,
+        user_email,
     ):
-        brain_id_to_use = brain_id
-        metadata = {}
-        if not brain_id:
-            brain_settings = BrainSettings()
-            supabase_client = get_supabase_client()
-            embeddings = None
-            if brain_settings.ollama_api_base_url:
-                embeddings = OllamaEmbeddings(
-                    base_url=brain_settings.ollama_api_base_url
-                )  # pyright: ignore reportPrivateUsage=none
-            else:
-                embeddings = OpenAIEmbeddings()
-            vector_store = CustomSupabaseVectorStore(
-                supabase_client, embeddings, table_name="vectors", user_id=user_id
-            )
-            # Get the first question from the chat_question
-
-            question = chat_question.question
-            history = chat_service.get_chat_history(chat_id)
-            if history:
-                question = history[0].user_message
-                brain_id_to_use = history[0].brain_id
-
-            list_brains = []
-            if history:
-                list_brains = vector_store.find_brain_closest_query(user_id, question)
-                metadata["close_brains"] = list_brains
-            else:
-                list_brains = vector_store.find_brain_closest_query(user_id, question)
-                if list_brains:
-                    brain_id_to_use = list_brains[0]["id"]
-                else:
-                    brain_id_to_use = None
-            # Add to metadata close_brains and close_brains_similarity
-            metadata["close_brains"] = list_brains
-
-        follow_up_questions = chat_service.get_follow_up_question(chat_id)
-        metadata["follow_up_questions"] = follow_up_questions
-
-        brain = brain_service.get_brain_by_id(brain_id_to_use)
-        if (
-            brain
-            and brain.brain_type == BrainType.DOC
-            or model not in models_supporting_function_calls
-        ):
+        if brain and brain.brain_type == BrainType.DOC:
             return KnowledgeBrainQA(
                 chat_id=chat_id,
-                model=model,
-                max_tokens=max_tokens,
-                temperature=temperature,
-                brain_id=str(brain.brain_id),
-                streaming=streaming,
-                prompt_id=prompt_id,
-                metadata=metadata,
-            )
-        if brain.brain_type == BrainType.COMPOSITE:
-            return CompositeBrainQA(
-                chat_id=chat_id,
-                model=model,
-                max_tokens=max_tokens,
-                temperature=temperature,
                 brain_id=str(brain.brain_id),
                 streaming=streaming,
                 prompt_id=prompt_id,
                 user_id=user_id,
-                metadata=metadata,
+                user_email=user_email,
             )
 
-        if brain.brain_type == BrainType.API:
-            return APIBrainQA(
-                chat_id=chat_id,
-                model=model,
-                max_tokens=max_tokens,
-                temperature=temperature,
-                brain_id=str(brain.brain_id),
-                streaming=streaming,
-                prompt_id=prompt_id,
-                user_id=user_id,
-                metadata=metadata,
+        if brain.brain_type == BrainType.INTEGRATION:
+            integration_brain = integration_brain_description_service.get_integration_description_by_user_brain_id(
+                brain.brain_id, user_id
             )
+
+            integration_class = integration_list.get(
+                integration_brain.integration_name.lower()
+            )
+            if integration_class:
+                return integration_class(
+                    chat_id=chat_id,
+                    temperature=temperature,
+                    brain_id=str(brain.brain_id),
+                    streaming=streaming,
+                    prompt_id=prompt_id,
+                    user_id=user_id,
+                    user_email=user_email,
+                )

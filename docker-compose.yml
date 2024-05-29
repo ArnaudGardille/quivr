@@ -14,6 +14,7 @@ services:
         - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
         - NEXT_PUBLIC_CMS_URL=${NEXT_PUBLIC_CMS_URL}
         - NEXT_PUBLIC_FRONTEND_URL=${NEXT_PUBLIC_FRONTEND_URL}
+        - NEXT_PUBLIC_AUTH_MODES=${NEXT_PUBLIC_AUTH_MODES}
     container_name: web
     depends_on:
       - backend-core
@@ -30,12 +31,13 @@ services:
       context: backend
       dockerfile: Dockerfile
     container_name: backend-core
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     healthcheck:
-      test: ["CMD", "curl", "http://localhost:5050/healthz"]
+      test: [ "CMD", "curl", "http://localhost:5050/healthz" ]
     command:
       - "uvicorn"
       - "main:app"
-      - "--reload"
       - "--host"
       - "0.0.0.0"
       - "--port"
@@ -64,6 +66,8 @@ services:
       context: backend
       dockerfile: Dockerfile
     container_name: worker
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command: celery -A celery_worker worker -l info
     restart: always
     depends_on:
@@ -78,6 +82,8 @@ services:
       context: backend
       dockerfile: Dockerfile
     container_name: beat
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command: celery -A celery_worker beat -l info
     restart: always
     depends_on:
@@ -92,6 +98,8 @@ services:
       context: backend
       dockerfile: Dockerfile
     container_name: flower
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command: celery -A celery_worker flower -l info --port=5555
     restart: always
     depends_on:
@@ -100,3 +108,7 @@ services:
       - beat
     ports:
       - 5555:5555
+
+networks:
+  quivr-network:
+    driver: bridge

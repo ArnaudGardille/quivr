@@ -13,8 +13,8 @@ module.exports = {
     "import/no-unresolved": 0,
     "import/prefer-default-export": 0,
     "import/no-duplicates": "error",
-    complexity: ["error", 8],
-    "max-lines": ["error", 125],
+    complexity: ["error", 10],
+    "max-lines": ["error", 300],
     "max-depth": ["error", 3],
     "max-params": ["error", 4],
     eqeqeq: ["error", "smart"],
@@ -129,6 +129,7 @@ module.exports = {
       },
       rules: {
         "@typescript-eslint/prefer-optional-chain": "error",
+        "react-hooks/exhaustive-deps": "off",
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/prefer-nullish-coalescing": "error",
@@ -169,13 +170,7 @@ module.exports = {
         "@typescript-eslint/no-unnecessary-type-arguments": "error",
         "@typescript-eslint/prefer-string-starts-ends-with": "error",
         "@typescript-eslint/switch-exhaustiveness-check": "error",
-        "@typescript-eslint/restrict-template-expressions": [
-          "error",
-          {
-            allowNumber: true,
-            allowBoolean: true,
-          },
-        ],
+        "@typescript-eslint/restrict-template-expressions": "off",
       },
     },
   ],

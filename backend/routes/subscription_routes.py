@@ -17,11 +17,17 @@ from modules.prompt.service.prompt_service import PromptService
 from modules.user.entity.user_identity import UserIdentity
 from modules.user.service.user_service import UserService
 from pydantic import BaseModel
-from repository.brain_subscription import (
+from modules.brain.service.brain_subscription import (
     SubscriptionInvitationService,
     resend_invitation_email,
 )
+from modules.brain.repository import (
+    IntegrationBrain,
+)
 from routes.headers.get_origin_header import get_origin_header
+from logger import get_logger
+
+logger = get_logger(__name__)
 
 subscription_router = APIRouter()
 subscription_service = SubscriptionInvitationService()
@@ -30,6 +36,7 @@ prompt_service = PromptService()
 brain_user_service = BrainUserService()
 brain_service = BrainService()
 api_brain_definition_service = ApiBrainDefinitionService()
+integration_brains_repository = IntegrationBrain()
 
 
 @subscription_router.post(
@@ -82,6 +89,7 @@ def invite_users_to_brain(
                 resend_invitation_email(
                     subscription,
                     inviter_email=current_user.email or "Quivr",
+                    user_id=current_user.id,
                     origin=origin,
                 )
         except Exception as e:
@@ -205,7 +213,7 @@ def get_user_invitation(
             detail="You have not been invited to this brain",
         )
 
-    brain_details = brain_service.get_brain_details(brain_id)
+    brain_details = brain_service.get_brain_details(brain_id, current_user.id)
 
     if brain_details is None:
         raise HTTPException(
@@ -248,7 +256,18 @@ async def accept_invitation(
             rights=invitation["rights"],
             is_default_brain=False,
         )
+        shared_brain = brain_service.get_brain_by_id(brain_id)
+        integration_brain = integration_brains_repository.get_integration_brain(
+            brain_id=brain_id,
+        )
+        integration_brains_repository.add_integration_brain(
+            brain_id=brain_id,
+            user_id=current_user.id,
+            integration_id=integration_brain.integration_id,
+            settings=integration_brain.settings,
+        )
     except Exception as e:
+        logger.error(f"Error adding user to brain: {e}")
         raise HTTPException(status_code=400, detail=f"Error adding user to brain: {e}")
 
     try:
@@ -292,7 +311,7 @@ async def decline_invitation(
 
 
 class BrainSubscriptionUpdatableProperties(BaseModel):
-    rights: str | None
+    rights: str | None = None
     email: str
 
 
@@ -457,11 +476,7 @@ async def unsubscribe_from_brain_handler(
 
     if brain is None:
         raise HTTPException(status_code=404, detail="Brain not found")
-    if brain.status != "public":
-        raise HTTPException(
-            status_code=403,
-            detail="You cannot subscribe to this brain without invitation",
-        )
+
     # check if user is already subscribed to brain
     user_brain = brain_user_service.get_brain_for_user(current_user.id, brain_id)
     if user_brain is None:
